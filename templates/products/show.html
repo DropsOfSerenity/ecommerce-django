@@ -4,4 +4,17 @@
 
 <h1>{{ product.title }}</h1>
 
+{% for image in images %}
+  {% if image.featured %}
+    <h1>Featured</h1>
+    <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}"/>
+  {% else %}
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}">
+      </a>
+    </div>
+  {% endif %}
+{% endfor %}
+
 {% endblock %}

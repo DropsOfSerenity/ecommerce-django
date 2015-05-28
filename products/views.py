@@ -20,5 +20,6 @@ def index(request):
 def show(request, slug):
     template = 'products/show.html'
     product = get_object_or_404(Product, slug=slug)
-    context = {'product': product}
+    images = product.productimage_set.all()
+    context = {'product': product, 'images': images}
     return render(request, template, context)
