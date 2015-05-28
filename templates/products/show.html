@@ -6,8 +6,10 @@
 
 {% for image in images %}
   {% if image.featured %}
-    <h1>Featured</h1>
-    <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}"/>
+    <div class="col-xs-12 col-md-6">
+      <h1>Featured</h1>
+      <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}"/>
+    </div>
   {% else %}
     <div class="col-xs-6 col-md-3">
       <a href="#" class="thumbnail">

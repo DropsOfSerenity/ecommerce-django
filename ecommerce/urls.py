@@ -6,6 +6,8 @@ from products import urls as products_urls
 
 urlpatterns = [
     url(r'^$', 'products.views.home', name='home'),
+    url(r'^s/$', 'products.views.search', name='search'),
+
     
     url(r'^products/', include(products_urls, namespace='products')),
     url(r'^admin/', include(admin.site.urls)),

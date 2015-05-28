@@ -2,6 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product
 
 
+def search(request):
+    template = "products/home.html"
+    search = request.GET.get('q', '')
+    context = {
+        'products': Product.objects.filter(title__icontains=search)
+    }
+    return render(request, template, context)
+
 def home(request):
     template = "products/home.html"
     context = {
