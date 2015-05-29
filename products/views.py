@@ -3,11 +3,10 @@ from .models import Product
 
 
 def search(request):
-    template = "products/home.html"
+    template = "products/search.html"
     search = request.GET.get('q', '')
-    context = {
-        'products': Product.objects.filter(title__icontains=search)
-    }
+    products = Product.objects.filter(title__icontains=search)
+    context = {'products': products, 'query': search}
     return render(request, template, context)
 
 def home(request):

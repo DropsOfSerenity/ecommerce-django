@@ -2,21 +2,42 @@
 
 {% block content %}
 
-<h1>{{ product.title }}</h1>
+<div class="row">
 
-{% for image in images %}
-  {% if image.featured %}
-    <div class="col-xs-12 col-md-6">
-      <h1>Featured</h1>
-      <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}"/>
+  <div class="col-sm-4">
+
+    {% if product.has_featured_image %}
+    <div class="col-xs-12">
+      <img class="img-responsive" src="{{ product.get_featured_image.image.url }}"
+      alt="{{ product.title }}"/>
+    <hr />
     </div>
-  {% else %}
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}">
-      </a>
-    </div>
-  {% endif %}
-{% endfor %}
+    {% endif %}
+
+    {% for image in images %}
+      {% if not image.featured %}
+      <div class="col-xs-6">
+        <a href="#" class="thumbnail">
+          <img class="img-responsive" src="{{ image.image.url }}" alt="{{ product.title }}">
+        </a>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="col-sm-8">
+    <h1>
+      {{ product.title }}
+      <button href="#" class="pull-right btn btn-primary">
+        Add to Cart
+      </button>
+    </h1>
+    <hr>
+    Price: {{ product.price }}
+    <hr>
+    <p>{{ product.description | linebreaks }}</p>
+  </div>
+
+</div>
 
 {% endblock %}
