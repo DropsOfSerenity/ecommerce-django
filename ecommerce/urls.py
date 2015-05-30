@@ -8,7 +8,10 @@ urlpatterns = [
     url(r'^$', 'products.views.home', name='home'),
     url(r'^s/$', 'products.views.search', name='search'),
 
-    
+    url(r'^cart/$', 'carts.views.view', name='cart'),
+    url(r'^cart/(?P<slug>[\w-]+)/$', 'carts.views.update_cart',
+        name='update_cart'),
+
     url(r'^products/', include(products_urls, namespace='products')),
     url(r'^admin/', include(admin.site.urls)),
 ]
